@@ -15,3 +15,12 @@ console.log('Finishing app');
 
 // bedzie: "Starting app","Finishing app", "0 seconds setTimeOut", "inside of callback"
 // Wydaje się dziwne, że "0 seconds setTimeOut", wyświetla się jako trzecie, ale w następnym odcinku ziomek wyjaścnia dalczego node tak działa
+
+// Lekcja nr 27 "Call Stack & Event Loop"
+// Gość tutaj wykłąda teorię z Asynchronous w node,js, mowi jak to działa "pod spodem" i że to trudne i zaleca oglądać ten filmik pare razy
+
+// Tutaj będziemy mieli opis jak to zadziała wewnątrz silnika V8, node.js itd.
+// Generalnie mamy tam process taki: Call Stack => Node APIs => Callback Queue , pozniej Event Loop
+
+// Tutaj żeby to ogarnąć to najlepiej wrócić do filmiku!
+// Pamiętaj, że w sumie powyższy przykłąd zadziała TAK samo na przeglądarce, bez używania node.js
