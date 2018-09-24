@@ -2,7 +2,7 @@
 const request = require('request');
 
 // Poniższa funkcja przyjmuję jeden arugment np. "1301 lombard philadelpiha"
-// encodeURIComponent('"1301 lombard philadelpiha');
+// encodeURIComponent('1301 lombard philadelpiha');
 // zwróci coś takiego "1301%20lombard%20philadelpiha
 // poniżej zamiast .a, możesz też wpisać .adress
 
@@ -16,15 +16,16 @@ var geocodeAdress = (address, callback) => {
 
 	var encodeAdress = encodeURIComponent(address);
 
-	// zobacyzmy nasz argv (toz awiera wszystko co zostało sparsowane przez yargs)
+	// zobaczymy nasz argv (to zawiera wszystko co zostało sparsowane przez yargs)
 	// w consoli wpisz node app.js -a 'adres tutaj'
 	// console.log(argv);
 
 	// pokażemy encode adres
 	console.log(encodeAdress);
-	// pierwszy parametr to obiekt z informacjami (option object), który możmey konfigurowac różnymi danymi
-	// drugi to callback function (wywołany kiedy dostnaiemy http endpoint)
-	// w funckji callback, mamy dokładne argumenty które musimy podać tak samo  (error, response, body)->(jest to zapisane w dokumentacji tego modułu na stronie npm)
+
+	// pierwszy parametr to obiekt z informacjami (option object), który możemy konfigurować różnymi danymi
+	// drugi to callback function (wywołany kiedy dostaniemy http endpoint)
+	// w funkcji callback, mamy dokładne argumenty które musimy podać tak samo  (error, response, body)->(jest to zapisane w dokumentacji tego modułu na stronie npm)
 	request({
 		// tu damy uniknale rzeczy np. url
 		// url: 'http://www.mapquestapi.com/geocoding/v1/address?key=c5nydwgWVpU2BnpU37bgC5uYwNkWkatG&location=1301%20lombard%20street%20philadelphia',
@@ -71,6 +72,7 @@ var geocodeAdress = (address, callback) => {
 		else {
 			// żeby zobaczyć jak sie dostać do konrketnej informacji w naszym obiekcie, możemy wejśc w przeglądarkę(JSON view) lub konsolę i sprawdzić gdzie co jest 
 			// za pomocą consoli w taki sposób: console.log(JSON.stringify(response, undefined, 2));
+			// lub generalnie w consoli wyświetlić obiekt i go przeszukiwać
 
 			callback(undefined, {
 				// console.log(`Adress: ${body.results[0].providedLocation.location}`); // results[0], bo to tablica z jednym elemnetem (obiektem)
