@@ -13,7 +13,7 @@ const geocode = require('./geocode/geocode.js');
 // kolejny nasz plik (możemy pominąć .js)
 const weather = require('./weather/weather');
 
-// tu będziemy mieli obiket z finalnym sparsowanym outputem
+// tu będziemy mieli obiekt z finalnym sparsowanym outputem
 const argv = yargs
 	.options({
 		// a - adres, można tu było ustawic alias'a i dać najpeirw adress, a pozniej aliasa jako "a"  my mamy na odwrót)

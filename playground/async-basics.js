@@ -5,7 +5,7 @@ setTimeout( () => {
 	console.log('inside of callback');
 }, 2000);
 // Podobną rzecz zrobimy w naszej apce, bo na dane z google maps, bedizmey czekac jakoś 2 sekundy
-// Więc nie chcemy, zeby aplikacja przez te 2 sekundyc zekała, tylko zeby wykonywała się dalej
+// Więc nie chcemy, zeby aplikacja przez te 2 sekundy czekała, tylko zeby wykonywała się dalej
 
 setTimeout( () => {
 	console.log('0 seconds setTimeOut');

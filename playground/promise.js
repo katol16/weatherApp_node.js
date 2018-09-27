@@ -1,4 +1,4 @@
-// Intro to ES6 Promoises 
+// Intro to ES6 Promises 
 // Promises są dostepne od ES6
 
 // traktuj promise jako funkcję
