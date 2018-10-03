@@ -18,10 +18,23 @@ var getUser = (id, callback) => {
 	callback(user);
 };
 
-// UWAGA! tutaj callback się wykona sie tylko jeśli otrzymamy jakieś dane, czyli w naszym przypadku jeśli przyjdą dane usera o id=31
+// UWAGA! tutaj callback się wykona sie tylko jeśli otrzymamy jakieś dane, czyli w naszym przypadku jeśli przyjdą dane usera o np. id=31
+// To jest bardzo ważne! callback wykona się jeśli dostaniemy jakieś 'id', czyli jesli dsotnaiemy pierwszy parametr
+// Pamiętaj też, że tutaj nazewnsitwo jest niewazne, mozesz zamaist 'userObject' użyć 'user'. Ale własnie ,zeby wiadomo bylo,
+// że to nieistotne użyliśmy innej nazwy
 getUser(31, (userObject)=> {
 	console.log(userObject);
 });
+// Jeśli np. powyższe wywołanie funkcji, a dokłądnie callback, chcesz zapisać za pomocą zwykłej funkcji to będziesz miał:
+// getUser(31, function callback(userObject) {
+// 	console.log(userObject);
+// });
+// lub nawet
+// getUser(31, function(userObject) {
+// 	console.log(userObject);
+// });
+
+// Ale lepiej przyzyczajaj się do funkcji strzałkowej
 
 // wywołamy naszego callbacka w consoli za pomocą: node playground/callbacks.js 
 // Oczywiście powyżej mamy fakeowy przykłąd, nie musimy u robić callbacka, żeby dostać nasz obiekt
@@ -48,7 +61,7 @@ getUser2(31, (userObject)=> {
 });
 
 
-// Teraz pokażemy przykąłd z API google maps
+// Teraz pokażemy przykład z API google maps
 // Najpeirw potrzebujemy tego linka
 // https://maps.googleapis.com/maps/api/geocode/json?address=1301 lombard street philadelphia
 // On zwróci nam info z api n temat konkretnego miejsca (1301 lombard street philadelphia)
