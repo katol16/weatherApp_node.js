@@ -25,5 +25,3 @@ somePromise.then((message) => {
 }, (errorMessage) => {
 	console.log('Error: ', errorMessage);
 });
-
-// Lekcja nr 37 "Advanced promises"
