@@ -1,6 +1,7 @@
 const express = require('express');
 // Template Engine - hbs
 const hbs =  require('hbs');
+const fs = require('fs');
 
 var app = express();
 
@@ -13,6 +14,42 @@ app.set('view engine', 'hbs');
 // Partial Files - registerPartials, to pliki, któ©ych będziemy często używać np. footer
 // registerPartials, przyjmuję jeden argument i jest to ścieżka do pliku
 hbs.registerPartials(__dirname + '/views/partials');
+
+// express middleware - zainicjowaliśmy już kilka np powyżej z express.static
+// tu mamy przykład, gdzie jeśli nie wykonamy, funkcji next, to nic nam się dalej nie wykona.
+// możesz to sprawdzić jak zakomentuejsz next();
+app.use((req, res, next) => {
+	var now = new Date().toString();
+
+	// req, to obiekt dostępny w express, masz tam statusy requesta, metode, url
+	// w naszym przypadku metoda to GET, a ścieszka dla strony głównej to /
+	var log = `${now}: ${req.method} ${req.url}`;
+
+	console.log(log);
+	// Utworzymy plik, który pokaże nam jak pracował nasz serwer (może się przydać kiedyś taki pliczek)
+	fs.appendFile('server.log', log + '\n', (err) => {
+		if (err) {
+			console.log('Unable to append to server.log.');
+		}
+	});
+
+	// generalnie w środku tej funkcji mozemy robić, co chcemy
+	// Używamy next(); by powiedzieć express, ze skonczylismy (to co jest w tej funkcji) i może iść dalej. Dlatego jak zakomentujemy next, nic dalej się nie wykona
+	next();
+});
+
+// // Poniższy kod przyda się w momencie kiedy chcemy poinformować użytkowników, że są prowadzone prace na stronie.
+// // teraz stworzymy przykłąd z uzyciem next
+// app.use((req, res, next) => {
+// 	res.render('maintance.hbs');
+// 	// w tym momencie nie wywołąmy next, więc pokaże się tlyko maintence,hbs
+// });
+
+// // UWAGA!
+// // Mała pierdoła poniżej
+// // tutaj jeszcze warto zauważyć, że strona help.html dalej się wczyta, ze względu na strukture srkyptu
+// // ale wsytarczy, ze przeniesiesiesz linie 'app.use(express.static(__dirname + '/public'));' poniżej, czyli:
+// hbs.registerPartials(__dirname + '/views/partials');
 
 // registerHelpers, do rejestrowania funkcji, przyjmuję dwa argumenty. Nazwę funkcji i ciało funckji
 // poniższy helper, ustawi nam odpowiednią datę w footer.hbs
